@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Best Students</h2>
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Programme
+            </td>
+        </tr>
+    </thead>
+    @foreach(_0.Installation.Models.IndexModel student in Model){
+        <tr>
+            <td>
+                @student.ID
+            </td>
+            <td>
+                @student.Name
+            </td>
+            <td>
+                @student.Programme
+            </td>
+        </tr>
+    }
+
+</table>
