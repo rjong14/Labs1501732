@@ -15,11 +15,23 @@ namespace _1.MVCEntity.Controllers
         private SongDBContext db = new SongDBContext();
 
         // GET: Playlist
-        public ActionResult Index()
-        {
-            return View(db.Playlist.ToList());
-        }
+        public ActionResult Index(string songGenre, string searchString) {
+            var GenreLst = new List<string>();
+            var GenreQry = from d in db.Playlist orderby d.Genre select d.Genre;
 
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.songGenre = new SelectList(GenreLst);
+
+            var playlist = from so in db.Playlist select so;
+
+            if (!String.IsNullOrEmpty(searchString)) {
+                playlist = playlist.Where(s => s.Title.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(songGenre)) {
+                playlist = playlist.Where(x => x.Genre == songGenre);
+            }
+            return View(playlist);
+        }
         // GET: Playlist/Details/5
         public ActionResult Details(int? id)
         {
@@ -41,15 +53,14 @@ namespace _1.MVCEntity.Controllers
             return View();
         }
 
+
         // POST: Playlist/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Singer,SongWriter")] Song song)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Singer,SongWriter")] Song song) {
+            if (ModelState.IsValid) {
                 db.Playlist.Add(song);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -114,6 +125,7 @@ namespace _1.MVCEntity.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

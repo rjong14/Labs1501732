@@ -1,0 +1,5 @@
+C:\Users\Rick de Jong\Documents\GitHubVisualStudio\Labs1501732\2.MVCDatabaseFirst\bin\Debug\2.MVCDatabaseFirst.dacpac
+C:\Users\Rick de Jong\Documents\GitHubVisualStudio\Labs1501732\2.MVCDatabaseFirst\bin\Debug\_2.MVCDatabaseFirst.dll
+C:\Users\Rick de Jong\Documents\GitHubVisualStudio\Labs1501732\2.MVCDatabaseFirst\bin\Debug\_2.MVCDatabaseFirst.pdb
+C:\Users\Rick de Jong\Documents\GitHubVisualStudio\Labs1501732\2.MVCDatabaseFirst\obj\Debug\_2.MVCDatabaseFirst.dll
+C:\Users\Rick de Jong\Documents\GitHubVisualStudio\Labs1501732\2.MVCDatabaseFirst\obj\Debug\_2.MVCDatabaseFirst.pdb
